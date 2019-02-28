@@ -1,0 +1,73 @@
+.login {
+	width: 95%;
+	border: 1px solid;
+	border-width: 2px;
+	border-color: #000000;
+	border-radius: 0.2em;
+	margin-top: 1%;
+	font-family: Verdana;
+
+}
+
+#logout{
+	float: right;
+	border: 1px solid black;
+	margin-top: 1%;
+    margin-right: 3%;
+    margin-bottom:1%;
+}
+
+.logo{
+	width: 150px;
+	height: 150px;
+	
+
+}
+
+#logoP{
+	border: 1px solid black;
+    width: 20%;
+    margin-top: 1%;
+    border-radius: 75%;
+}
+
+
+#addOrder{
+	margin-bottom: 2%;
+}
+
+label{
+	float: left;
+	margin-left: 25%;
+}
+
+input{
+
+	float: right;
+	margin-right: 21%;
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+#orderClient{
+	width: 24%;
+    height: 4%;
+}
+
+#orderProduct{
+		width: 24%;
+    height: 4%;
+}
+
+#orderPrice {
+		width: 24%;
+    height: 4%;
+}
+
+.addOrderLabel{
+	    margin-bottom: 34px;
+}
+
+span{
+	margin-right: -5%;
+}

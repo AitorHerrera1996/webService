@@ -1,0 +1,78 @@
+<HTML>	
+	<HEAD>
+
+		<meta charset="utf-8">
+	  	<link rel="stylesheet" href="lib\css\jquery-ui.css">
+	  	<link rel="stylesheet" href="lib\css\indexEditClient.css">
+	  	<script src="lib\js\jquery-1.12.4.js"></script>
+	 	<script src="lib\js\jquery-ui.js"></script>
+	 	<script src="lib\js\funciones.js"></script>
+	 	
+	 	<script>		 		
+	 		var sHtmlClientes = "";		
+	 		$( function() {
+
+	 			var IDBuscar;
+	 			var campoNombre;
+	 			var campoDireccion;
+	 			var campoProvincia;
+	 			var campoCiudad;
+	 			var campoCP;
+	 			
+	 			$( "#adminDerecha" ).accordion({
+	 				heightStyle: "content"
+	 			});
+	 			$( "#editClient" ).button();	 			
+	 			$( "#logout" ).button();	
+
+	 			var paramstr = window.location.search.substr(1);	 			
+				var paramarr = paramstr.split ("=");	
+				
+
+				IDBuscar = paramarr[1];
+	 			llenarEditCliente(IDBuscar);
+
+	 			$( "#editClient" ).click(function(){
+	 				campoNombre = comprobarCamposNoNumericos($("#inputNombreCliente"));
+	 				campoDireccion = comprobarCamposNoNumericos($("#inputDireccionCliente"));
+	 				campoProvincia = comprobarCamposNoNumericos($("#inputProvinciaCliente"));
+	 				campoCiudad = comprobarCamposNoNumericos($("#inputCiudadCliente"));
+	 				campoCP = comprobarCamposNumericos($("#inputCPCliente"));
+	 				if(campoNombre == true && campoDireccion == true && campoProvincia == true && campoCiudad == true && campoCP == true){
+	 					editarRegistro(IDBuscar);
+	 				} else {
+	 					alert("SOME FIELDS ARE INCORRECT! CHECK THEM ALL AGAIN");
+	 				}
+	 			})
+	 		});
+	 	</script>
+
+	</HEAD>
+	<BODY>		
+	
+		<center><div class="login">			
+			<div id="logoP"><img src="lib\css\logoTravel.png" class="logo"/></div>
+			<div><p>EDIT CLIENT</p></div>   			
+			<div>	
+				<div class ="editClient" id = "nombreCliente"><label>Name:</label>
+				<input id="inputNombreCliente"/><br/></div>						
+			
+				<div class ="editClient"><label>Adress</label>
+				<input id="inputDireccionCliente"/><br/></div>	
+			
+				<div class ="editClient"><label>Province:</label>
+				<input id="inputProvinciaCliente"/><br/></div>	
+			
+				<div class ="editClient"><label>City</label>
+				<input id="inputCiudadCliente"/><br/></div>	
+			
+				<div class ="editClient"><label>Postal Code</label>
+				<input id="inputCPCliente"/><br/></div>		
+
+				<button id="editClient">EDIT</button>
+			</div>
+
+		</div></center>	
+		<div id="logout">Logout</div>
+	</BODY>
+</HTML>

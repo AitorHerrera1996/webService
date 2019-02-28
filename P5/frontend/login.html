@@ -1,0 +1,44 @@
+<HTML>	
+	<HEAD>
+
+		<meta charset="utf-8">
+	  	<link rel="stylesheet" href="lib\css\jquery-ui.css">
+	  	<link rel="stylesheet" href="lib\css\index.css">
+	  	<script src="lib\js\jquery-1.12.4.js"></script>
+	 	<script src="lib\js\jquery-ui.js"></script>
+	 	<script src="lib\js\funciones.js"></script>
+	 	<script>	 		
+	 		$( function() {
+	 			crearBD();
+	 			$("#accedir").click(function(){
+	 				var usuario = $("#usuario").val();
+	 				var password = $("#contrasena").val();	 				
+	 				comprobarUsuario(usuario, password); 
+	 			});
+	 		});
+	 	</script>
+
+	</HEAD>
+	<BODY>		
+		<center><div class="login">
+			<div><img src="lib\css\logoTravel.png" class="logo"/></div>
+			<div><p>Welcome to AITOR S.A, please identify yourself</p></div>
+			<div  id="loginform">
+	    	<div>
+			        <label for="Usuari">User: </label>
+			        <input id="usuario" class="input" type="text" required/>	
+	    		</div><br>
+
+	    		<div>
+			        <label for="Contrasenya">Password: </label>        
+					<input id="contrasena" class="input" type="password" required/>
+	    		</div><br>
+
+			    <div class="boton">
+			        <button type="submit" value="Enviar" id="accedir">Login</button>
+			    </div><br>
+
+			</div>
+		</div></center>	
+	</BODY>
+</HTML>

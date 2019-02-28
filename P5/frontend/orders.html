@@ -1,0 +1,73 @@
+<HTML>	
+	<HEAD>
+
+		<meta charset="utf-8">
+	  	<link rel="stylesheet" href="lib\css\jquery-ui.css">
+	  	<link rel="stylesheet" href="lib\css\indexOrders.css">
+	  	<script src="lib\js\jquery-1.12.4.js"></script>
+	 	<script src="lib\js\jquery-ui.js"></script>
+	 	<script src="lib\js\funciones.js"></script>
+	 	
+	 	<script> 		
+	 		$( function() { 			
+   				
+   				 			
+	 			llenarArrayClientes();
+   				
+   				llenarArrayProductos();
+
+   				$("#orderProduct").focusout(function(){
+   					buscarPrecio($("#orderProduct").val());
+   				})
+   					
+   				
+
+	 			$("#addOrder").button();
+	 			$("#comercialOrder").selectmenu();
+	 			$("#orderVAT").selectmenu();
+
+	 			llenarComerciales();
+	 			llenarIVA();
+
+
+	 		});
+	 	</script>
+
+	</HEAD>
+	<BODY>		
+	
+		<center><div class="login">			
+			<div id="logoP"><img src="lib\css\logoTravel.png" class="logo"/></div>
+			<div><p>ADD ORDER</p></div>   			
+			<div>	
+				<div class ="addOrderLabel"><label>Commercial:</label>		
+    			<select id="comercialOrder"><br/>
+
+					
+				</select>	
+						
+			
+				<div class ="addOrderLabel"><label style="margin-top: 2%;">Client:</label><br/>
+				<input id="orderClient"/></div><br/>
+
+				<div class ="addOrderLabel"><label>VAT:</label>
+				<select id="orderVAT"><br/>
+					
+				</select>
+			
+				<div class ="addOrderLabel"><label style="margin-top: 2%;">Product:</label><br/>
+				<input id="orderProduct"/></div><br/>
+
+				<label>PRICE:</label>
+				<div><input id="orderPrice"/></div><br/><br/>
+				
+				<label>Observations:</label><br/><br/>
+				<textarea cols="63" rows="10" style="margin-bottom: 1%"></textarea><br/>
+
+				<button id="addOrder">ADD</button>
+			</div>
+
+		</div></center>	
+		<div id="logout">Logout</div>
+	</BODY>
+</HTML>

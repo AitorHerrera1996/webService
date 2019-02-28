@@ -1,0 +1,198 @@
+<HTML>	
+	<HEAD>
+
+		<meta charset="utf-8">
+	  	<link rel="stylesheet" href="lib\css\jquery-ui.css">
+	  	<link rel="stylesheet" href="lib\css\indexA.css">
+	  	<script src="lib\js\jquery-1.12.4.js"></script>
+	 	<script src="lib\js\jquery-ui.js"></script>
+	 	<script src="lib\js\funciones.js"></script>
+	 	
+	 	<script>	 
+	 		var sHtmlClientes = "";		
+	 		$( function() {
+
+	 			var IDBuscar;
+	 			var campoNombre;
+	 			var campoDireccion;
+	 			var campoProvincia;
+	 			var campoCiudad;
+	 			var campoCP;
+	 			var campoPorcentaje;
+	 			var campoPrecio;
+	 			var campoDescripcion;
+	 			
+	 			$( "#adminDerecha" ).accordion({
+	 				heightStyle: "content"
+	 			});
+	 			$( "#addCommercial" ).button();
+	 			$( "#addClient" ).button();
+	 			$( "#addIVA" ).button();
+	 			$( "#addProduct" ).button();
+	 			$( "#logout" ).button();
+	 			$( "#addOrder" ).button();
+
+	 			$( "#logout" ).click(function(){
+	 				window.location.href="login.html";
+	 			});
+
+	 			llenarClientes();
+	 			llenarIVA();
+	 			llenarProductos();
+	 			llenarComerciales();
+
+	 			$("#addClient").click(function(){
+	 				campoNombre = comprobarCamposNoNumericos($("#inputNombreCliente"));
+	 				campoDireccion = comprobarCamposNoNumericos($("#inputDireccionCliente"));
+	 				campoProvincia = comprobarCamposNoNumericos($("#inputProvinciaCliente"));
+	 				campoCiudad = comprobarCamposNoNumericos($("#inputCiudadCliente"));
+	 				campoCP = comprobarCamposNumericos($("#inputCPCliente"));
+	 				if(campoNombre == true && campoDireccion == true && campoProvincia == true && campoCiudad == true && campoCP == true){
+	 					pdInsertarRegistro();
+	 				} else {
+	 					alert("SOME FIELDS ARE INCORRECT! CHECK THEM ALL AGAIN");
+	 				}
+	 			})
+
+	 			$("#addIVA").click(function(){
+					campoNombre = comprobarCamposNoNumericos($("#inputNombreIVA"));
+	 				campoPorcentaje = comprobarCamposNumericos($("#inputPorcentajeIVA"));
+	 				if (campoNombre == true && campoPorcentaje == true) {
+	 					pdInsertarIVA();	 					
+	 				}else{
+	 					alert("SOME FIELDS ARE INCORRECT! CHECK THEM ALL BEFORE GOING AHEAD");
+	 				}
+	 			})
+
+	 			$("#addProduct").click(function(){
+	 				campoNombre = comprobarCamposNoNumericos($("#inputProductName"));
+	 				campoPrecio = comprobarCamposNumericos($("#inputProductPrice"));	 				 
+	 				if (campoNombre == true && campoPrecio == true) {
+	 					pdInsertarProductos();	 					
+	 				}else{
+	 					alert("SOME FIELDS ARE INCORRECT! CHECK THEM ALL BEFORE GOING AHEAD");
+	 				}
+	 			})
+
+	 			$("#addCommercial").click(function(){
+	 				pdInsertarComerciales();
+	 			})
+
+	 			$("#addOrder").click(function(){
+	 				window.location.href = "../frontend/orders.html";
+	 			})
+
+	 		});
+	 	</script>
+
+	</HEAD>
+	<BODY>		
+	
+		<center><div class="login">			
+			<div id="logoP"><img src="lib\css\logoTravel.png" class="logo"/></div>
+			<div><p>Welcome to the ADMIN page</p></div>   			
+			<div id="adminDerecha">
+				<h3 class="accordeonTitle">EDIT CLIENT</h3>
+				<div>
+					<table id = "editClientes" style="text-align: center;" >                       
+                    </table>
+				</div>
+				<h3 class="accordeonTitle">ADD CLIENT</h3>
+				<div>	
+					<div class ="addClientDiv" id = "nombreCliente"><label>Name:</label>
+					<input id="inputNombreCliente"/><br/></div>						
+				
+					<div class ="addClientDiv"><label>Adress</label>
+					<input id="inputDireccionCliente"/><br/></div>	
+				
+					<div class ="addClientDiv"><label>Province:</label>
+					<input id="inputProvinciaCliente"/><br/></div>	
+				
+					<div class ="addClientDiv"><label>City</label>
+					<input id="inputCiudadCliente"/><br/></div>	
+				
+					<div class ="addClientDiv"><label>Postal Code</label>
+					<input id="inputCPCliente"/><br/></div>		
+
+					<button id="addClient">ADD</button>
+
+				</div>
+
+				<h3 class="accordeonTitle">EDIT IVA</h3>
+				<div>
+					<table id = "editIVA" style="text-align: center;"  >                       
+                    </table>
+				</div>
+				<h3 class="accordeonTitle">ADD IVA</h3>		
+				<div>	
+					<div class ="addIVADiv"><label>IVA's name:</label>
+					<input id="inputNombreIVA"/><br/></div>			
+			
+					<div class ="addIVADiv"><label>Percentage:</label>
+					<input id="inputPorcentajeIVA"/><br/></div>			
+
+					<button id="addIVA">ADD</button>
+
+				</div>
+
+				<h3 class="accordeonTitle">EDIT PRODUCT</h3>
+				<div>
+					<table id = "editProducto" style="text-align: center;"  >                       
+                    </table>
+				</div>
+
+				<h3 class="accordeonTitle">ADD PRODUCT</h3>		
+				<div>	
+					<div class ="addProductDiv"><label>Name:</label>
+					<input id="inputProductName"/><br/></div>			
+			
+					<div class ="addProductDiv"><label>Price:</label>
+					<input id="inputProductPrice"/><br/></div>			
+
+					<div class ="addProductDiv"><label>Description:</label>
+					<input id="inputProductDescription"/><br/></div>	
+
+					<button id="addProduct">ADD</button>
+
+				</div>
+
+				<h3 class="accordeonTitle">EDIT COMMERCIAL</h3>
+				<div>
+					<table id = "editComercial" style="text-align: center;"  >                       
+                    </table>
+				</div>
+
+				<h3 class="accordeonTitle">ADD COMMERCIAL</h3>		
+				<div>	
+					<div class ="addCommercialDiv"><label>Username:</label>
+					<input id = "inputComercialUser"/><br/></div>			
+			
+					<div class ="addCommercialDiv"><label>Password:</label>
+					<input id="inputComercialPass"/><br/></div>	
+				
+					<div class ="addCommercialDiv"><label>Adress</label>
+					<input id="inputComercialAdress"/><br/></div>	
+				
+					<div class ="addCommercialDiv"><label>Province:</label>
+					<input id="inputComercialProvince"/><br/></div>	
+				
+					<div class ="addCommercialDiv"><label>City</label>
+					<input id="inputComercialCity"/><br/></div>	
+				
+					<div class ="addCommercialDiv"><label>Postal Code</label>
+					<input id="inputComercialCP"/><br/></div>		
+
+					<button id="addCommercial">ADD</button>				
+
+				</div>
+
+				<h3 class="accordeonTitle">ORDERS</h3>
+				<div>
+					<div><!--LISTA CLIENTES--></div>
+					<button id="addOrder">ADD ORDER</button>
+				</div>
+			</div> 	
+		</div></center>	
+		<div id="logout">Logout</div>
+	</BODY>
+</HTML>

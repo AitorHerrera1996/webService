@@ -1,0 +1,67 @@
+<HTML>	
+	<HEAD>
+
+		<meta charset="utf-8">
+	  	<link rel="stylesheet" href="lib\css\jquery-ui.css">
+	  	<link rel="stylesheet" href="lib\css\indexEditProduct.css">
+	  	<script src="lib\js\jquery-1.12.4.js"></script>
+	 	<script src="lib\js\jquery-ui.js"></script>
+	 	<script src="lib\js\funciones.js"></script>
+	 	
+	 	<script>		 		
+	 		var sHtmlClientes = "";		
+	 		$( function() {
+
+	 			var IDBuscar;
+	 			var campoNombre;
+	 			var campoPrecio;
+	 			
+	 			$( "#adminDerecha" ).accordion({
+	 				heightStyle: "content"
+	 			});
+	 			$( "#editProduct" ).button();	 			
+	 			$( "#logout" ).button();	
+
+	 			var paramstr = window.location.search.substr(1);	 			
+				var paramarr = paramstr.split ("=");	
+				
+
+				IDBuscar = paramarr[1];
+	 			llenarEditProduct(IDBuscar);
+
+	 			$( "#editProduct" ).click(function(){
+	 				campoNombre = comprobarCamposNoNumericos($("#editProductName"));
+	 				campoPrecio = comprobarCamposNoNumericos($("#editProductPrice"));
+	 				if(campoNombre == true && campoPrecio == true){
+	 					editarProducto(IDBuscar);
+	 				} else {
+	 					alert("SOME FIELDS ARE INCORRECT! CHECK THEM ALL AGAIN");
+	 				}
+	 			})
+	 		});
+	 	</script>
+
+	</HEAD>
+	<BODY>		
+	
+		<center><div class="login">			
+			<div id="logoP"><img src="lib\css\logoTravel.png" class="logo"/></div>
+			<div><p>EDIT PRODUCT</p></div>   			
+				
+			<div class ="editProduct"><label>Name:</label>
+				<input id = "editProductName"/><br/></div>			
+		
+				<div class ="editProduct"><label>Price:</label>
+				<input id = "editProductPrice"/><br/></div>			
+
+				<div class ="editProduct"><label>Description:</label><br/>
+				<textarea id = "editProductDescription" cols = "63" rows="10" style="margin-top: 2%; margin-bottom: 2%"/></textarea><br/>
+
+				<button id="editProduct">EDIT</button>
+			</div>
+			
+
+		</div></center>	
+		<div id="logout">Logout</div>
+	</BODY>
+</HTML>

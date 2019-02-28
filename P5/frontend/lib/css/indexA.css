@@ -1,0 +1,72 @@
+.login {
+	width: 95%;
+	border: 1px solid;
+	border-width: 2px;
+	border-color: #000000;
+	border-radius: 0.2em;
+	margin-top: 1%;
+	font-family: Verdana;
+
+}
+
+#logout{
+	float: right;
+	border: 1px solid black;
+	margin-top: 1%;
+    margin-right: 3%;
+    margin-bottom:1%;
+}
+
+.logo{
+	width: 150px;
+	height: 150px;
+	
+
+}
+
+#logoP{
+	border: 1px solid black;
+    width: 20%;
+    margin-top: 1%;
+    border-radius: 75%;
+}
+
+
+#adminDerecha{	
+	padding: 1%; 
+}
+
+#addCommercial{
+	margin-bottom: 2%;
+}
+
+label{
+	float: left;
+	margin-left: 25%;
+}
+
+input{
+	float: right;
+	margin-right: 25%;
+	text-align: center;
+}
+.addClientDiv{
+	margin-bottom: 1%;
+}
+
+.addIVADiv{
+	margin-bottom: 1%;
+}
+
+.addProductDiv{
+	margin-bottom: 1%;
+}
+
+.addCommercialDiv{
+	margin-bottom: 1%;
+}
+
+.accordeonTitle{
+	background: lightgrey; color: black;
+	border: 1px solid grey;
+}

@@ -1,0 +1,65 @@
+<HTML>	
+	<HEAD>
+
+		<meta charset="utf-8">
+	  	<link rel="stylesheet" href="lib\css\jquery-ui.css">
+	  	<link rel="stylesheet" href="lib\css\indexEditIVA.css">
+	  	<script src="lib\js\jquery-1.12.4.js"></script>
+	 	<script src="lib\js\jquery-ui.js"></script>
+	 	<script src="lib\js\funciones.js"></script>
+	 	
+	 	<script>		 		
+	 		var sHtmlClientes = "";		
+	 		$( function() {
+
+	 			var IDBuscar;
+	 			var campoNombre;
+	 			var campoPorcentaje;	 			
+	 			
+	 			$( "#adminDerecha" ).accordion({
+	 				heightStyle: "content"
+	 			});
+	 			$( "#editIVA" ).button();	 			
+	 			$( "#logout" ).button();	
+
+	 			var paramstr = window.location.search.substr(1);	 			
+				var paramarr = paramstr.split ("=");
+				var idFinal = paramarr[1].split("");
+				
+
+				IDBuscar = idFinal[0];
+	 			llenarEditIVA(IDBuscar);
+
+	 			$("#editIVA").click(function(){
+	 				campoNombre = comprobarCamposNoNumericos($("#inputNombreIVA"));
+	 				campoPorcentaje = comprobarCamposNumericos($("#inputPorIVA"));
+	 				if (campoNombre == true && campoPorcentaje == true) {
+	 					editarRegistroIVA(IDBuscar);	 					
+	 				}else{
+	 					alert("SOME FIELDS ARE INCORRECT! CHECK THEM ALL BEFORE GOING AHEAD");
+	 				}
+	 			})
+
+	 		});
+	 	</script>
+
+	</HEAD>
+	<BODY>		
+	
+		<center><div class="login">			
+			<div id="logoP"><img src="lib\css\logoTravel.png" class="logo"/></div>
+			<div><p>EDIT CLIENT</p></div>   			
+			<div>	
+				<div class ="editIVA" id = "nombreCliente"><label>Name:</label>
+				<input id="inputNombreIVA"/><br/></div>						
+			
+				<div class ="editIVA"><label>Porcentatge</label>
+				<input id="inputPorIVA"/><br/></div>					
+
+				<button id="editIVA">EDIT</button>
+			</div>
+
+		</div></center>	
+		<div id="logout">Logout</div>
+	</BODY>
+</HTML>
